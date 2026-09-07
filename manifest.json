@@ -1,12 +1,21 @@
 {
   "manifest_version": 3,
   "name": "mp-helper 公众号助手",
-  "version": "0.1.0",
-  "description": "公众号后台助手：一键把排版好的 HTML 存进草稿箱（自动上传图片）、导出发表记录为 JSON",
+  "version": "0.2.0",
+  "description": "公众号后台助手：排版 HTML 一键存草稿（自动传图/自动封面）、导出发表记录 JSON、可选的本地 AI Agent 桥接模式",
+  "permissions": ["alarms", "storage"],
+  "host_permissions": ["https://mp.weixin.qq.com/*", "http://127.0.0.1/*"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": false
+  },
   "content_scripts": [
     {
       "matches": ["https://mp.weixin.qq.com/cgi-bin/*"],
-      "js": ["src/content/main.js"],
+      "js": ["src/lib/mp-api.js", "src/content/main.js"],
       "css": ["src/content/style.css"],
       "run_at": "document_idle"
     }

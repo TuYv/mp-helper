@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>mp-helper 设置</title>
+  <style>
+    body { font: 14px/1.6 -apple-system, sans-serif; padding: 16px; width: 320px; color: #333; }
+    h2 { font-size: 15px; margin: 0 0 12px; }
+    label { display: block; margin: 10px 0 4px; color: #555; }
+    input[type="text"], input[type="number"] { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; }
+    .row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    button { margin-top: 14px; padding: 7px 18px; border: none; border-radius: 6px; background: #16a34a; color: #fff; cursor: pointer; }
+    #status { margin-left: 10px; color: #16a34a; }
+    .hint { color: #999; font-size: 12px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Agent 模式</h2>
+  <div class="row">
+    <input type="checkbox" id="enabled" />
+    <label for="enabled" style="margin:0">开启（让本地 AI 助手指挥插件）</label>
+  </div>
+  <label for="port">本地桥端口</label>
+  <input type="number" id="port" min="1024" max="65535" />
+  <label for="token">口令（与桥启动时的口令一致）</label>
+  <input type="text" id="token" placeholder="任意字符串，两边配一样的" />
+  <button id="save">保存</button><span id="status"></span>
+  <p class="hint">开启后插件每 30 秒向 127.0.0.1 上的桥领一次任务。桥的启动方式见项目 README。</p>
+  <script src="options.js"></script>
+</body>
+</html>
