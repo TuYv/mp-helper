@@ -5,7 +5,12 @@ chrome.storage.local
   .then((cfg) => {
     $("enabled").checked = cfg.agentEnabled;
     $("port").value = cfg.bridgePort;
-    $("token").value = cfg.bridgeToken;
+    // 首次打开自动生成口令，用户不用自己编
+    $("token").value =
+      cfg.bridgeToken ||
+      [...crypto.getRandomValues(new Uint8Array(12))]
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
   });
 
 $("save").addEventListener("click", async () => {

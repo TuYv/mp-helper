@@ -22,8 +22,8 @@
   </div>
   <label for="port">本地桥端口</label>
   <input type="number" id="port" min="1024" max="65535" />
-  <label for="token">口令（与桥启动时的口令一致）</label>
-  <input type="text" id="token" placeholder="任意字符串，两边配一样的" />
+  <label for="token">口令（已自动生成，把它告诉你的 AI 助手即可）</label>
+  <input type="text" id="token" />
   <button id="save">保存</button><span id="status"></span>
   <p class="hint">开启后插件每 30 秒向 127.0.0.1 上的桥领一次任务。桥的启动方式见项目 README。</p>
   <script src="options.js"></script>
